@@ -1,0 +1,36 @@
+<div class="all">
+    <div class="simple mat-elevation-z5">
+        <div class="wifiListDiv">
+            <div class="wifiHeader">
+                <h2 style="margin-bottom: 0px">Wifi List :</h2>
+                <button [disabled]="isLoading || isTryToConnect" mat-raised-button (click)="getWifi()">Refresh List</button>
+            </div>
+
+            <mat-selection-list [disabled]="isTryToConnect" *ngIf="!isLoading" class="wifiList" [(ngModel)]="wifi" [multiple]="false">
+                <mat-list-option *ngFor="let item of wifiList" [value]="item.name">
+                    <div class="info"><span>{{item.name}}</span><span>Strength: {{item.strenght}}</span></div>
+                </mat-list-option>
+            </mat-selection-list>
+            <div class="loader" *ngIf="isLoading">
+                <mat-spinner diameter="100"></mat-spinner>
+            </div>
+        </div>
+
+        <div class="passwordDiv">
+
+            <h3>Wifi name: {{wifi}}</h3>
+
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput [disabled]="!wifi || isTryToConnect" [(ngModel)]="password">
+                </mat-form-field>
+            </div>
+
+            <div style="display: flex;">
+                <button [disabled]="!wifi || isTryToConnect" mat-raised-button (click)="tryToConnect()">Connect Wifi</button>
+                <mat-spinner style="margin-left: 10px;" diameter="36" *ngIf="isTryToConnect"></mat-spinner>
+            </div>
+        </div>
+    </div>
+</div>

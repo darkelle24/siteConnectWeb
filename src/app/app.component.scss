@@ -1,0 +1,57 @@
+.wifiListDiv {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-right: 16px;
+}
+
+.wifiList {
+    max-height: 100%;
+    overflow-x: auto;
+    margin-top: 16px;
+}
+
+.all {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.simple {
+    padding: 16px;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    height: 60%;
+    background-color: lightgrey;
+}
+
+.wifiHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.passwordDiv {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 16px;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
