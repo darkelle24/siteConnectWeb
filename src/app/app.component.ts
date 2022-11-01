@@ -30,34 +30,38 @@ export class AppComponent {
   ]
 
   constructor(private http: HttpClient) {
-
+    this.getWifi()
   }
 
   getWifi() {
     this.isLoading = true
     this.wifi = undefined
-    this.http.get(environment.url + '/LEDOn').subscribe({
+    this.http.get(environment.url + '/wifis').subscribe({
       next: (value: any) => {
         console.log(value);
-        //this.isLoading = false;
+        this.wifiList = Object.keys(value).map((oneValue) => {
+          return {name: oneValue, strenght: value[oneValue]}
+        })
+        console.log(this.wifi)
+        this.isLoading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error(err);
-        //this.isLoading = false;
+        this.isLoading = false;
       },
     })
   }
 
   tryToConnect() {
     this.isTryToConnect = true;
-    this.http.post(environment.url + '/wifi', this.wifi + ':' + this.password).subscribe({
+    this.http.post(environment.url + '/connect', { ssid: this.wifi, password: this.password }).subscribe({
       next: (value: any) => {
         console.log(value);
-        //this.isTryToConnect = false;
+        this.isTryToConnect = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error(err);
-        //this.isTryToConnect = false;
+        this.isTryToConnect = false;
       },
     })
   }

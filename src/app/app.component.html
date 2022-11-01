@@ -28,7 +28,7 @@
             </div>
 
             <div style="display: flex;">
-                <button [disabled]="!wifi || isTryToConnect" mat-raised-button (click)="tryToConnect()">Connect Wifi</button>
+                <button [disabled]="!wifi || isTryToConnect || isLoading" mat-raised-button (click)="tryToConnect()">Connect Wifi</button>
                 <mat-spinner style="margin-left: 10px;" diameter="36" *ngIf="isTryToConnect"></mat-spinner>
             </div>
         </div>
