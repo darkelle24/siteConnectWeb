@@ -34,7 +34,7 @@ export class AppComponent {
   }
 
   getWifi() {
-    //this.isLoading = true
+    this.isLoading = true
     this.wifi = undefined
     this.http.get(environment.url + '/wifis').subscribe({
       next: (value: any) => {
