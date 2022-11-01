@@ -4,10 +4,10 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build",
+        "build": "ng build --output-hashing none",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
-        "build-compress": "ng build && gzipper c ./dist --include js,css,html --output-file-format [filename].[ext] ./dist-compressed/"
+        "build-compress": "ng build --output-hashing none && gzipper c ./dist --include js,css,html --output-file-format [filename].[ext] ./dist-compressed/"
     },
     "private": true,
     "dependencies": {
