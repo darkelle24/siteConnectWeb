@@ -60,7 +60,16 @@ export class AppComponent {
     this.http.post(environment.url + '/connect', { ssid: this.wifi[0], password: this.password }).subscribe({
       next: (value: any) => {
         console.log(value);
-        this.isTryToConnect = false;
+        this.http.post(environment.url + '/validate', {}).subscribe({
+          next: (value: any) => {
+            console.log(value);
+            this.isTryToConnect = false;
+          },
+          error: (err: any) => {
+            console.error(err);
+            this.isTryToConnect = false;
+          }
+        })
       },
       error: (err: any) => {
         console.error(err);
