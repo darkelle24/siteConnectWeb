@@ -7,7 +7,7 @@
         "build": "ng build --output-hashing none",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
-        "build-compress": "ng build --output-hashing none && gzipper c ./dist --include js,css,html --output-file-format [filename].[ext] ./dist-compressed/"
+        "build-compress": "rimraf dist-compressed && ng build --output-hashing none && gzipper c ./dist --include js,css,html --output-file-format [filename].[ext] ./dist-compressed/"
     },
     "private": true,
     "dependencies": {
@@ -22,6 +22,7 @@
         "@angular/platform-browser-dynamic": "^14.0.0",
         "@angular/router": "^14.0.0",
         "gzipper": "^7.2.0",
+        "rimraf": "^3.0.2",
         "rxjs": "~7.5.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.11.4"
